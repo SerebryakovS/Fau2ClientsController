@@ -1,6 +1,5 @@
 #!/usr/bin/python
-
-
+https://github.com/SerebryakovS/Fau2ClientsController.git
 import os
 import time
 import random
@@ -8,6 +7,8 @@ import speedtest
 import netifaces
 from socket import *
 import multiprocessing as mp
+
+wlx3460f902a196
 
 COUNT_DEVICES = 10
 IfaceNames = [f"wlan{Idx}" for Idx in range(1,COUNT_DEVICES+1)]
@@ -20,7 +21,6 @@ def DisconnectFromAccessPoint(IfaceName: str)-> bool:
 def GetInterfaceIpAddress(IfaceName: str)-> str:
     return netifaces.ifaddresses(IfaceName)[netifaces.AF_INET][0]['addr']
 #########################################################################################
-
 def SpeedPrettyFormat(NumberOfBytes:float)-> dict:
     Suffixes = ['B','K','M','G']
     Idx = 0
