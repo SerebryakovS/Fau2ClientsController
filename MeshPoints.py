@@ -13,12 +13,9 @@ class MeshInformator(object):
         with open("Config.json", "r") as JsonConfigFile:
             AppConfig = json.load(JsonConfigFile)["MeshPoints"]
         StartBaseBssid = AppConfig["StartBaseBssid"]
-        self.MeshPoints = {
-            "master" : MeshPoint(AddToMacAddress(StartBaseBssid, 0)),
-            "slave1" : MeshPoint(AddToMacAddress(StartBaseBssid, 2)),
-            "slave2" : MeshPoint(AddToMacAddress(StartBaseBssid, 4))
-        }
-        print()
+        self.MeshPoints = dict()
+        for Idx in range(1,AppConfig["TotalCount"]+1):
+            self.MeshPoints.update({"MeshDev"+str(Idx) : MeshPoint(AddToMacAddress(StartBaseBssid, (Idx-1)*2))})
 
 class MeshPoint(object):
     def __init__(self, PointBaseBssid):
