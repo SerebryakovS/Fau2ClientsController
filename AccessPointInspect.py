@@ -2,6 +2,7 @@
 
 import os
 import json
+import time
 import netifaces
 import subprocess
 import speedtest
@@ -9,7 +10,9 @@ import speedtest
 #########################################################################################
 
 def ConnectToAccessPoint(ESSID: str,Password: str, IfaceName: str)-> bool:
-    return os.system(f"nmcli device wifi connect {ESSID} password {Password} ifname {IfaceName}")
+    os.system(f"nmcli device wifi connect {ESSID} password {Password} ifname {IfaceName}")
+    time.sleep(5)
+    return
 
 def DisconnectFromAccessPoint(IfaceName: str)-> bool:
     return os.system(f"nmcli dev disconnect {IfaceName}")
