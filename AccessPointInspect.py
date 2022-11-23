@@ -40,7 +40,7 @@ def InspectAccessPoints(IfaceName: str):
     with open("Config.json", "r") as JsonConfigFile:
         AppConfig = json.load(JsonConfigFile)["AccessPoints"]
     BaseEssid = AppConfig["BaseEssid"]
-    for Index in range(AppConfig["TotalCount"]):
+    for Index in range(1,AppConfig["TotalCount"]+1):
         DisconnectFromAccessPoint(IfaceName)
         ConnectToAccessPoint(BaseEssid+str(Index), AppConfig["Password"], IfaceName)
         print(SpeedTestGlobal(IfaceName),
