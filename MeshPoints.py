@@ -12,19 +12,28 @@ class MeshInformator(object):
     def __init__(self):
         with open("Config.json", "r") as JsonConfigFile:
             AppConfig = json.load(JsonConfigFile)["MeshPoints"]
-        StartBaseBssid = AppConfig["StartBaseBssid"]
+        BaseBssid = AppConfig["BaseBssid"]
         self.MeshPoints = dict()
         for Idx in range(1,AppConfig["TotalCount"]+1):
-            self.MeshPoints.update({"MeshDev"+str(Idx) : MeshPoint(AddToMacAddress(StartBaseBssid, (Idx-1)*2))})
+            self.MeshPoints.update({"MeshDev"+str(Idx) : MeshPoint(AddToMacAddress(BaseBssid, (Idx-1)*2))})
+
 
 class MeshPoint(object):
     def __init__(self, PointBaseBssid):
         self.PointBaseBssid = PointBaseBssid
         self.Wlan0Bssid = AddToMacAddress(self.PointBaseBssid, 3)
-        self.Wlan1Bssid = AddToMacAddress(self.PointBaseBssid, 4)
-        print(self.PointBaseBssid,self.Wlan0Bssid,self.Wlan1Bssid)
+        self.Mesh0Bssid = AddToMacAddress(self.PointBaseBssid, 4)
+        self.Wlan1Bssid = self.Mesh0Bssid.replace(self.PointBaseBssid[:2],PointBaseBssid[:1]+"A")
+        self.Report = {
+            "PointBaseBssid:" : self.PointBaseBssid,
+            "Wlan0Bssid" : self.Wlan0Bssid,
+            "Wlan1Bssid" : self.Wlan1Bssid,
+            "Mesh0Bssid" : self.Mesh0Bssid
+        }
 
 if __name__ == "__main__":
-    m = MeshInformator()
+    MeshInformator = MeshInformator()
+    for MeshPointName in MeshInformator.MeshPoints.keys():
+        print(MeshInformator.MeshPoints[MeshPointName].Report)
 
 

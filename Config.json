@@ -1,6 +1,11 @@
 {
     "MeshPoints":{
-        "StartBaseBssid" : "F8:5E:3C:1E:57:00",
+        "BaseBssid" : "F8:5E:3C:1E:57:00",
+        "TotalCount" : 3
+    },
+    "AccessPoints":{
+        "BaseEssid" : "CumanAP",
+        "Password" : "12345678",
         "TotalCount" : 3
     }
 }
