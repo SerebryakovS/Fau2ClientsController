@@ -16,6 +16,7 @@ if __name__ == "__main__":
     Arguments = vars(ArgumentsParser.parse_args())
     with open("Config.json", "r") as JsonConfigFile:
         IfaceName = json.load(JsonConfigFile)["NetworkInterface"]
+    os.system(f"wondershaper clear {IfaceName}")
     if Arguments["bind"]:
         AccessPointInspect.BindToAccessPoint(IfaceName, Arguments["bind"])
     if Arguments["inspect"]:
