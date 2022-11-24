@@ -20,4 +20,3 @@ def ProvideConstantLoad(IfaceName: str, DownloadSpeed: str):
         SuccessfulIterationsCount+=1
         ElapsedTime = time.time() - StartTime
         print(f" IterationsCount={SuccessfulIterationsCount}, ElapsedTime={int(ElapsedTime)}")
-ProvideConstantLoad("wlan0","20")
