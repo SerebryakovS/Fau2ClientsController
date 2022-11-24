@@ -1,16 +1,17 @@
 {
-    "MeshPoints":{
+    "MeshPoints" : {
         "BaseBssid" : "F8:5E:3C:1E:57:00",
         "TotalCount" : 3
     },
-    "AccessPoints":{
+    "AccessPoints" : {
         "BaseEssid" : "CumanAP",
         "Password" : "12345678",
         "TotalCount" : 3
     },
-    "ConstantLoader":{
+    "ConstantLoader" : {
         "LoopLoadFileURL" : "http://212.183.159.230/200MB.zip",
         "TargetSpeedUpload" : 20,
         "TargetSpeedDownload" : 20
-    }
+    },
+    "NetworkInterface" : "wlan0"
 }

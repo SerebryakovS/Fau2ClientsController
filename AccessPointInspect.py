@@ -49,4 +49,13 @@ def InspectAccessPoints(IfaceName: str):
         print(SpeedTestGlobal(IfaceName),
               "signalPower:",subprocess.getoutput("nmcli -f ACTIVE,SIGNAL dev wifi list | awk '$1==\"yes\" {print $2}'"),"[dBm]")
 
+def BindToAccessPoint(IfaceName: str, AccessPointIndex: str):
+    with open("Config.json", "r") as JsonConfigFile:
+        AppConfig = json.load(JsonConfigFile)["AccessPoints"]
+    EssidToConnect = AppConfig["BaseEssid"] + AccessPointIndex
+    DisconnectFromAccessPoint(IfaceName)
+    ConnectToAccessPoint(EssidToConnect, AppConfig["Password"], IfaceName)
+
+
+
 
