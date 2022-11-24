@@ -4,6 +4,7 @@
 
 import argparse
 import AccessPointInspect
+import ConstantLoad
 
 if __name__ == "__main__":
     ArgumentsParser = argparse.ArgumentParser(formatter_class = argparse.RawDescriptionHelpFormatter)
@@ -13,6 +14,6 @@ if __name__ == "__main__":
     if Arguments["inspect"]:
         AccessPointInspect.InspectAccessPoints(Arguments["inspect"])
     if Arguments["download"]:
-        AccessPointInspect.ProvideConstantLoad(Arguments["download"])
+        ConstantLoad.ProvideConstantLoad(Arguments["download"])
 
 
