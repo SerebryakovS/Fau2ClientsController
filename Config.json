@@ -7,5 +7,10 @@
         "BaseEssid" : "CumanAP",
         "Password" : "12345678",
         "TotalCount" : 3
+    },
+    "ConstantLoader":{
+        "LoopLoadFileURL" : "http://212.183.159.230/200MB.zip",
+        "TargetSpeedUpload" : 20,
+        "TargetSpeedDownload" : 20
     }
 }
