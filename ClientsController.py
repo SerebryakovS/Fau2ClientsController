@@ -20,6 +20,6 @@ if __name__ == "__main__":
     if Arguments["bind"]:
         AccessPointInspect.BindToAccessPoint(IfaceName, Arguments["bind"])
     if Arguments["inspect"]:
-        AccessPointInspect.InspectAccessPoints(IfaceName,Arguments["inspect"])
+        AccessPointInspect.InspectAccessPoints(IfaceName)
     if Arguments["download"]:
         ConstantLoad.ProvideConstantLoad(IfaceName,Arguments["download"])
