@@ -12,7 +12,7 @@ if __name__ == "__main__":
     ArgumentsParser = argparse.ArgumentParser(formatter_class = argparse.RawDescriptionHelpFormatter)
     ArgumentsParser.add_argument("-b", "--bind", metavar="BIND", help = "Bind execution to specific access point (by index: [1,2,3])")
     ArgumentsParser.add_argument("-i", "--inspect", metavar="INSPECT", help = "Inspect all provided access points for speed and power")
-    ArgumentsParser.add_argument("-d", "--download", metavar="DWNLOAD", help = "Infinite downloading with rate specified in config file")
+    ArgumentsParser.add_argument("-d", "--download", metavar="DWNLOAD", help = "Infinite downloading with download rate specified as argument")
     Arguments = vars(ArgumentsParser.parse_args())
     with open("Config.json", "r") as JsonConfigFile:
         IfaceName = json.load(JsonConfigFile)["NetworkInterface"]
@@ -21,4 +21,4 @@ if __name__ == "__main__":
     if Arguments["inspect"]:
         AccessPointInspect.InspectAccessPoints(IfaceName)
     if Arguments["download"]:
-        ConstantLoad.ProvideConstantLoad(IfaceName)
+        ConstantLoad.ProvideConstantLoad(IfaceName,Arguments["download"])
