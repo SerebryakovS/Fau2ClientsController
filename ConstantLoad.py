@@ -5,12 +5,14 @@ import time
 import wget
 
 def ProvideConstantLoad(IfaceName: str, DownloadSpeed: str):
-    os.system(f"wondershaper clear {IfaceName}")
+    #os.system(f"wondershaper clear {IfaceName}")
     time.sleep(1)
     with open("Config.json", "r") as JsonConfigFile:
         AppConfig = json.load(JsonConfigFile)["ConstantLoader"]
     LoopLoadFileURL = AppConfig["LoopLoadFileURL"]
-    os.system(f"wondershaper {IfaceName} -d {DownloadSpeed}")
+    #os.system(f"wondershaper {IfaceName} -d {DownloadSpeed}")
+    print(f"wondershaper {IfaceName} -d {int(DownloadSpeed)*1000}")
+    exit();
     time.sleep(1)
     SuccessfulIterationsCount = 0
     while(True):
@@ -20,3 +22,4 @@ def ProvideConstantLoad(IfaceName: str, DownloadSpeed: str):
         SuccessfulIterationsCount+=1
         ElapsedTime = time.time() - StartTime
         print(f" IterationsCount={SuccessfulIterationsCount}, ElapsedTime={int(ElapsedTime)}")
+ProvideConstantLoad("wlan0","20")
