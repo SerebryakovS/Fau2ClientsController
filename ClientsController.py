@@ -17,7 +17,7 @@ if __name__ == "__main__":
     with open("Config.json", "r") as JsonConfigFile:
         IfaceName = json.load(JsonConfigFile)["NetworkInterface"]
     if Arguments["bind"]:
-        AccessPointInspect.BindToAccessPoint(IfaceName,AccessPointIndex)
+        AccessPointInspect.BindToAccessPoint(IfaceName, Arguments["bind"])
     if Arguments["inspect"]:
         AccessPointInspect.InspectAccessPoints(IfaceName)
     if Arguments["download"]:
