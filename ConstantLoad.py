@@ -10,7 +10,7 @@ def ProvideConstantLoad(IfaceName: str, DownloadSpeed: str):
     with open("Config.json", "r") as JsonConfigFile:
         AppConfig = json.load(JsonConfigFile)["ConstantLoader"]
     LoopLoadFileURL = AppConfig["LoopLoadFileURL"]
-    os.system(f"wondershaper {IfaceName} -d {int(DownloadSpeed)*1000}")
+    os.system(f"wondershaper {IfaceName} {int(DownloadSpeed)*1000} {int(DownloadSpeed)*1000}")
     time.sleep(1)
     SuccessfulIterationsCount = 0
     while(True):
