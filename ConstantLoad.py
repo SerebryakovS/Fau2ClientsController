@@ -4,15 +4,13 @@ import json
 import time
 import wget
 
-def ProvideConstantLoad(IfaceName: str):
+def ProvideConstantLoad(IfaceName: str, DownloadSpeed: str):
     os.system(f"wondershaper clear {IfaceName}")
     time.sleep(1)
     with open("Config.json", "r") as JsonConfigFile:
         AppConfig = json.load(JsonConfigFile)["ConstantLoader"]
     LoopLoadFileURL = AppConfig["LoopLoadFileURL"]
-    DownloadSpeed = AppConfig["TargetSpeedDownload"]
-    UploadSpeed = AppConfig["TargetSpeedUpload"]
-    os.system(f"wondershaper {IfaceName} {DownloadSpeed} {UploadSpeed}")
+    os.system(f"wondershaper {IfaceName} -d {DownloadSpeed}")
     time.sleep(1)
     SuccessfulIterationsCount = 0
     while(True):
