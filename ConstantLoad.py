@@ -8,7 +8,9 @@ def ProvideConstantLoad(IfaceName: str):
     with open("Config.json", "r") as JsonConfigFile:
         AppConfig = json.load(JsonConfigFile)["ConstantLoader"]
     LoopLoadFileURL = AppConfig["LoopLoadFileURL"]
-    os.system(f"wondershaper {IfaceName} {AppConfig["TargetSpeedDownload"]} {AppConfig["TargetSpeedUpload"]}")
+    DownloadSpeed = AppConfig["TargetSpeedDownload"]
+    UploadSpeed = AppConfig["TargetSpeedUpload"]
+    os.system(f"wondershaper {IfaceName} {DownloadSpeed} {UploadSpeed}")
     SuccessfulIterationsCount = 0
     while(1):
         StartTime = time.time()
@@ -17,3 +19,4 @@ def ProvideConstantLoad(IfaceName: str):
         SuccessfulIterationsCount+=1
         ElapsedTime = time.time() - StartTime
         print(f" IterationsCount={SuccessfulIterationsCount}, ElapsedTime={int(ElapsedTime)}")
+ProvideConstantLoad("sfd")
